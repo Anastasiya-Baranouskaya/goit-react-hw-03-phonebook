@@ -1,6 +1,8 @@
-import { Component } from "react";
-import { ContactListItem } from "./ContactListItem";
-import s from "./ContactList.module.css";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { ContactListItem } from './ContactListItem';
+
+import s from './ContactList.module.css';
 export class ContactList extends Component {
   render() {
     const { list, onDeleteContact } = this.props;
@@ -19,3 +21,11 @@ export class ContactList extends Component {
     );
   }
 }
+ContactList.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  ),
+  onDeleteContact: PropTypes.func.isRequired,
+};

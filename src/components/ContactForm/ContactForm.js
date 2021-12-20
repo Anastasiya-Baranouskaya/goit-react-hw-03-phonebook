@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-// import PropTypes from 'prop-types'
-import { v4 as uuidv4 } from "uuid";
-import s from "./ContactForm.module.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import s from './ContactForm.module.css';
 
 export class ContactForm extends Component {
   state = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
   };
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({
       [name]: value,
       id: uuidv4(),
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
     this.reset();
   };
   reset = () => {
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   };
   render() {
     const nameId = uuidv4();
@@ -67,3 +67,6 @@ export class ContactForm extends Component {
     );
   }
 }
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
