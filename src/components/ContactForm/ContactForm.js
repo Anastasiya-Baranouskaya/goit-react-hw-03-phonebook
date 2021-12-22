@@ -12,12 +12,11 @@ export class ContactForm extends Component {
     const { name, value } = e.currentTarget;
     this.setState({
       [name]: value,
-      id: uuidv4(),
     });
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit({ id: uuidv4(), ...this.state });
     this.reset();
   };
   reset = () => {
